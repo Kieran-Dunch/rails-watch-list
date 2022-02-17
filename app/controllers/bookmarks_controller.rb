@@ -1,12 +1,15 @@
 class BookmarksController < ApplicationController
-  before_action :set_bookmark, only: [:create, :destroy]
+  before_action :set_bookmark, only: [:destroy]
 
   def new
+    @list = set_list
     @bookmark = Bookmark.new
   end
 
   def create
+    @list = set_list
     @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.list = @list
     if @bookmark.save
       redirect_to list_path(@bookmark.list)
     else
@@ -27,10 +30,10 @@ class BookmarksController < ApplicationController
   end
 
   def set_list
-    @list = List.find(params[:id])
+    @list = List.find(params[:list_id])
   end
 
   def bookmark_params
-    params.require(:list).permit(:name)
+    params.require(:bookmark).permit(:comment, :movie_id)
   end
 end
