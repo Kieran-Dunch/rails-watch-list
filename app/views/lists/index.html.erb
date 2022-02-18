@@ -1,16 +1,13 @@
 <div class="banner text-center" style="background-image: url(https://dcist.com/wp-content/uploads/sites/3/2020/04/felix-mooneeram-evlkOfkQ5rE-unsplash-1500x1000.jpg)">
   <h1>UWatch: All your movies in one place!</h1>
 </div>
-<div>
+<div class="card-container">
   <% @lists.each do |list| %>
-    <div class="row">
-      <div class="card bg-dark text-white">
-        <img src="https://images.unsplash.com/photo-1578849278619-e73505e9610f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9wY29ybnxlbnwwfHwwfHw%3D&w=1000&q=80" alt="" class="card-img m-1">
-        <div class="card-img-overlay">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1578849278619-e73505e9610f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9wY29ybnxlbnwwfHwwfHw%3D&w=1000&q=80)">
+        <div>
           <h4 class="card-title"><%=list.name%></h4>
           <a><%= link_to "go", list_path(list), class: "btn btn-success"%></a>
         </div>
-      </div>
     </div>
   <% end %>
 </div>
